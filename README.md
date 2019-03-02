@@ -7,7 +7,7 @@ Design your component APIs for stability by separating appearance styles from la
 ```JSX
 import React from 'react';
 
-import {placeable} from 'placed-components';
+import { placeable } from 'placed-components';
 
 // Create a <Title> react component that renders an <h1> which is
 // centered, palevioletred and sized at 1.5em
@@ -20,7 +20,7 @@ const Title = placeble.h1`
 
 // Create a <MyTitle> react component that adds the layout for the tile.
 // Modifying appearance will throw errors.
-const Wrapper = placeable(Title)`
+const MyTitle = placeable(Title)`
   margin: 4em;
 `;
 
@@ -42,7 +42,7 @@ Occasionally you will create components that do need styling, whether they
 are private or add a minimal styles. These can be
 
 ```JSX
-import {placeable, styleable} from 'placed-components';
+import { placeable, styleable } from 'placed-components';
 
 const NormalizedButton = styleable.button`
   ::-moz-focus-inner { margin: -1px; padding: 0; border-width: 1px; }
@@ -59,10 +59,11 @@ const MyButton = placeable(NormalizedButton)`
 ## Fixed Components
 
 Some components should not have any styling added at all, such as a standard
-child component.
+child component. The created component cannot submitted as a parameter to
+styleable or placeable.
 
 ```JSX
-import {fixed} from 'placed-components';
+import { fixed } from 'placed-components';
 
 Menu.Item = fixed.li`
   padding: 0;
