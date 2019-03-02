@@ -4,11 +4,10 @@ Design your component APIs for stability by separating appearance styles from la
 
 ## Example
 
-<!-- prettier-ignore -->
 ```JSX
 import React from 'react';
 
-import placeable from 'placed-components';
+import {placeable} from 'placed-components';
 
 // Create a <Title> react component that renders an <h1> which is
 // centered, palevioletred and sized at 1.5em
@@ -43,6 +42,8 @@ Occasionally you will create components that do need styling, whether they
 are private or add a minimal styles. These can be
 
 ```JSX
+import {placeable, styleable} from 'placed-components';
+
 const NormalizedButton = styleable.button`
   ::-moz-focus-inner { margin: -1px; padding: 0; border-width: 1px; }
 `;
@@ -61,6 +62,8 @@ Some components should not have any styling added at all, such as a standard
 child component.
 
 ```JSX
+import {fixed} from 'placed-components';
+
 Menu.Item = fixed.li`
   padding: 0;
   margin: 0;
