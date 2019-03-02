@@ -12,22 +12,22 @@ import placeable from 'placed-components';
 
 // Create a <Title> react component that renders an <h1> which is
 // centered, palevioletred and sized at 1.5em
-const Title = styled.h1`
+const Title = placeble.h1`
   font-size: 1.5em;
   text-align: center;
   color: palevioletred;
+  background: papayawhip;
 `;
 
 // Create a <Wrapper> react component that renders a <section> with
 // some padding and a papayawhip background
 const Wrapper = placeable.section`
-  padding: 4em;
-  background: papayawhip;
+  margin: 4em;
 `;
 
 // Use them like any other React component – except they're styled!
 <Wrapper>
-  <Title>Hello World, this is my first placeable component!</Title>
+  <Title>Hello World, this is my first placed component!</Title>
 </Wrapper>
 ```
 
@@ -48,7 +48,7 @@ If you're using tooling that has babel-plugin-macros set up, you can switch to t
 import placeable from 'placed-components/macro';
 
 // A static className will be generated for Title (important for SSR)
-const Title = styled.h1`
+const Title = placeble.h1`
   font-size: 1.5em;
   text-align: center;
   color: palevioletred;
