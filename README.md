@@ -76,7 +76,7 @@ Menu.Item = fixed.li`
 If you're using tooling that has babel-plugin-macros set up, you can switch to the `placed-components/macro` import path instead to gain the effects of the babel plugin without further setup.
 
 ```js
-import placeable from 'placed-components/macro';
+import { placeable } from 'placed-components/macro';
 
 // A static className will be generated for Title (important for SSR)
 const Title = placeble.h1`
