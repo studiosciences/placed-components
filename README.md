@@ -19,26 +19,54 @@ const Title = placeble.h1`
   background: papayawhip;
 `;
 
-// Create a <Wrapper> react component that renders a <section> with
-// some padding and a papayawhip background
-const Wrapper = placeable.section`
+// Create a <MyTitle> react component that adds the layout for the tile.
+// Modifying appearance will throw errors.
+const Wrapper = placeable(Title)`
   margin: 4em;
 `;
 
 // Use them like any other React component – except they're styled!
-<Wrapper>
-  <Title>Hello World, this is my first placed component!</Title>
-</Wrapper>
+  <MyTitle>Hello World, this is my first placed component!</MyTitle>
 ```
 
 This is what you'll see in your browser:
 
 <div align="center">
-NEED TO UPDATE
   <a href="https://placed-components.com">
     <img alt="Screenshot of the above code ran in a browser" src="http://i.imgur.com/wUJpcjY.jpg" />
   </a>
 </div>
+
+## Styleable Components
+
+Occasionally you will create components that do need styling, whether they
+are private or add a minimal styles. These can be
+
+```JSX
+const NormalizedButton = styleable.button`
+  ::-moz-focus-inner { margin: -1px; padding: 0; border-width: 1px; }
+`;
+
+const MyButton = placeable(NormalizedButton)`
+  color: white;
+  border: none;
+  background: red;
+`;
+
+```
+
+## Fixed Components
+
+Some components should not have any styling added at all, such as a standard
+child component.
+
+```JSX
+Menu.Item = fixed.li`
+  padding: 0;
+  margin: 0;
+  display: flex;
+`;
+```
 
 ## Babel Macro
 
@@ -54,12 +82,6 @@ const Title = placeble.h1`
   color: palevioletred;
 `;
 ```
-
-If you wish to provide configuration options to the babel plugin similar to how you would in a `.babelrc`, [see this guide](https://github.com/kentcdodds/babel-plugin-macros/blob/master/other/docs/author.md#config-experimental). The config name is `"styledComponents"`.
-
-## Built with `placed-components`
-
-A lot of hard work goes into community libraries, projects, and guides. A lot of them make it easier to get started or help you with your next project! There’s also a whole lot of interesting apps and sites that people have built using placed-components.
 
 ## Contributing
 
