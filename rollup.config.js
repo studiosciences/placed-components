@@ -43,6 +43,7 @@ const commonPlugins = [
     ignoreGlobal: true,
     namedExports: {
       'react-is': ['isElement', 'isValidElementType', 'ForwardRef'],
+      '@layout-css/validator': ['isValidLayout'],
     },
   }),
   replace({
