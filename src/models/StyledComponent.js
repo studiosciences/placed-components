@@ -248,8 +248,7 @@ function wrapCompositionRules(rules: RuleSet, allow: string) {
     return rules;
   }
   if (allow === 'layout') {
-    // $FlowFixMe
-    return [`@supports layout{${rules[0]}}`];
+    return ['@supports layout{', ...rules, '}'];
   }
   return [];
 }
