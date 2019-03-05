@@ -264,6 +264,7 @@ export default function createStyledComponent(target: Target, options: Object, r
     ParentComponent = StyledComponent,
     attrs = EMPTY_ARRAY,
     allowComposition = 'appearance',
+    allowStyles,
   } = options;
 
   const styledComponentId =
@@ -278,8 +279,8 @@ export default function createStyledComponent(target: Target, options: Object, r
       ? Array.prototype.concat(target.attrs, attrs).filter(Boolean)
       : attrs;
 
-  const restrictedComposition = mostRestrictedComposition(
-    allowComposition,
+  const restrictedStyle = mostRestrictedComposition(
+    allowStyles || 'appearance',
     // $FlowFixMe
     target.allowComposition
   );
@@ -288,7 +289,7 @@ export default function createStyledComponent(target: Target, options: Object, r
     isTargetStyledComp
       ? // fold the underlying StyledComponent rules up (implicit extend)
         // $FlowFixMe
-        target.componentStyle.rules.concat(wrapCompositionRules(rules, restrictedComposition))
+        target.componentStyle.rules.concat(wrapCompositionRules(rules, restrictedStyle))
       : rules,
     finalAttrs,
     styledComponentId
@@ -305,9 +306,14 @@ export default function createStyledComponent(target: Target, options: Object, r
   // $FlowFixMe
   WrappedStyledComponent.attrs = finalAttrs;
   // $FlowFixMe
-  WrappedStyledComponent.allowStyles = target.allowComposition;
+  WrappedStyledComponent.allowStyles = target.allowComposition || 'appearance';
   // $FlowFixMe
-  WrappedStyledComponent.allowComposition = allowComposition;
+  WrappedStyledComponent.allowComposition = mostRestrictedComposition(
+    allowComposition,
+    // $FlowFixMe
+    target.allowComposition
+  );
+
   // $FlowFixMe
   WrappedStyledComponent.componentStyle = componentStyle;
   WrappedStyledComponent.displayName = displayName;

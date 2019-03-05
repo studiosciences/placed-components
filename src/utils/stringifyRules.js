@@ -33,6 +33,11 @@ function stripAtLayout(rule) {
     if (isValidLayout(layoutRule)) {
       return layoutRule;
     }
+    // eslint-disable-next-line no-console
+    console.warn(
+      `The following css should only include layout rules and not modify appearance. This css is ignored. ${layoutRule}`
+    );
+
     return '';
   }
   return rule;

@@ -8,7 +8,7 @@ const placeable = (tag: Target) => styled(tag, { allowComposition: 'layout' });
 
 // Shorthands for all valid HTML Elements
 domElements.forEach(domElement => {
-  placeable[domElement] = styled(domElement, { allowComposition: 'appearance' });
+  placeable[domElement] = placeable(domElement);
 });
 
 export default placeable;

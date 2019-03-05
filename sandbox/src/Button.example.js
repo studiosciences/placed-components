@@ -1,6 +1,6 @@
-/* global React, placeable, render, css */
+/* global React, placeable, styleable, fixed, render, css */
 
-const Button = placeable.button`
+const StyleableButton = styleable.button`
   font-size: 16px;
   border-radius: 5px;
   padding: 0.25em 1em;
@@ -11,19 +11,29 @@ const Button = placeable.button`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-
-  ${props =>
-    props.primary &&
-    css`
-      background: palevioletred;
-      color: white;
-    `};
+`;
+const Styled = placeable(StyleableButton)`
+  color: green;
 `;
 
-const Composed = placeable(Button)`
-  width: 80px;
+const PlaceableButton = placeable.button`
+  font-size: 16px;
+  border-radius: 5px;
+  padding: 0.25em 1em;
+  margin: 1em 1em;
+  background: transparent;
+  color: palevioletred;
+  border: 2px solid palevioletred;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
-const content = [<Button>Normal Button</Button>, <Composed >Button Composed</Composed>];
+const Composed = placeable(PlaceableButton)`
+  color: green;
+`;
+
+const content = [<Styled>Should be Green</Styled>, <Composed >Should Red Red</Composed>];
+// const content = [<Composed >Should Red Red</Composed>];
 
 render(content);

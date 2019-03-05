@@ -6,10 +6,10 @@ import * as styled from '..';
 
 const allowedImports: Array<string> = Object.keys(styled).filter(helper => helper !== '__esModule');
 
-function styledComponentsMacro({ references, state, babel: { types: t }, config = {} }) {
+function placedComponentsMacro({ references, state, babel: { types: t }, config = {} }) {
   const program = state.file.path;
 
-  // FIRST STEP : replace `styled-components/macro` by `styled-components
+  // FIRST STEP : replace `placed-components/macro` by `placed-components
   // references looks like this
   // { default: [path, path], css: [path], ... }
   let customImportName;
@@ -18,7 +18,7 @@ function styledComponentsMacro({ references, state, babel: { types: t }, config 
       throw new MacroError(
         `Invalid import: ${refName}. You can only import ${allowedImports.join(
           ', '
-        )} from 'styled-components/macro'.`
+        )} from 'placed-components/macro'.`
       );
     }
 
@@ -43,6 +43,6 @@ function styledComponentsMacro({ references, state, babel: { types: t }, config 
   program.traverse(babelPlugin({ types: t }).visitor, stateWithOpts);
 }
 
-const configName = 'styledComponents';
+const configName = 'placedComponents';
 
-export default createMacro(styledComponentsMacro, { configName });
+export default createMacro(placedComponentsMacro, { configName });

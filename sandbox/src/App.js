@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 
-import {placeable, styleable, css, keyframes, createGlobalStyle } from 'placed-components';
+import {placeable, styleable, fixed, css, keyframes, createGlobalStyle } from 'placed-components';
 
 import {
   LiveProvider as _LiveProvider,
@@ -81,7 +81,7 @@ const LiveProvider = styleable(_LiveProvider)`
   box-shadow: 3px 3px 18px rgba(66, 22, 93, 0.3);
 `;
 
-const LiveBlock = placeable.div`
+const LiveBlock = styleable.div`
   flex-basis: 50%;
   width: 50%;
   max-width: 50%;
@@ -95,11 +95,11 @@ const LiveBlock = placeable.div`
   }
 `;
 
-const LiveEditor = styleable(LiveBlock.withComponent(_LiveEditor))`
+const LiveEditor = placeable(LiveBlock.withComponent(_LiveEditor))`
   overflow: auto;
 `;
 
-const LivePreview = styleable(LiveBlock.withComponent(_LivePreview))`
+const LivePreview = placeable(LiveBlock.withComponent(_LivePreview))`
   background-color: white;
   display: flex;
   flex-direction: row;
@@ -108,7 +108,7 @@ const LivePreview = styleable(LiveBlock.withComponent(_LivePreview))`
   align-items: center;
 `;
 
-const LiveError = styleable(_LiveError)`
+const LiveError = placeable(_LiveError)`
   flex-basis: 100%;
   background: #ff5555;
   color: #fff;
@@ -129,7 +129,7 @@ const App = () => (
     <Content>
       <LiveProvider
         code={buttonExample}
-        scope={{ React, placeable, css, createGlobalStyle, keyframes }}
+        scope={{ React, placeable, styleable, fixed, css, createGlobalStyle, keyframes }}
         noInline
       >
         <LiveEditor />
