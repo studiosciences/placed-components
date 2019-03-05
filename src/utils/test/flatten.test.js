@@ -126,7 +126,7 @@ describe('flatten', () => {
     `;
 
     expect(() => TestRenderer.create(<Bar />)).toThrowErrorMatchingInlineSnapshot(
-      `"Foo is not a styled component and cannot be referred to via component selector. See https://www.styled-components.com/docs/advanced#referring-to-other-components for more details."`
+      `"Foo is not a placed component and cannot be referred to via component selector. See https://www.styled-components.com/docs/advanced#referring-to-other-components for more details."`
     );
   });
 

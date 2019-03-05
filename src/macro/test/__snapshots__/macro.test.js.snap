@@ -50,14 +50,14 @@ exports[`macro should work with { ThemeProvider }: should work with { ThemeProvi
 import { ThemeProvider } from '../../macro'
 
 React.createComponent(
-  ThemeProvider, 
-  { theme: { color: 'red' }}, 
+  ThemeProvider,
+  { theme: { color: 'red' }},
   'hello'
 )
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-import { ThemeProvider as _ThemeProvider } from 'styled-components';
+import { ThemeProvider as _ThemeProvider } from 'placed-components';
 
 
 React.createComponent(_ThemeProvider, { theme: { color: 'red' } }, 'hello');
@@ -74,7 +74,7 @@ createGlobalStyle\`
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-import { createGlobalStyle as _createGlobalStyle } from 'styled-components';
+import { createGlobalStyle as _createGlobalStyle } from 'placed-components';
 
 
 _createGlobalStyle\`
@@ -93,7 +93,7 @@ css\`
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-import { css as _css } from 'styled-components';
+import { css as _css } from 'placed-components';
 
 
 _css(['color:', ';'], props => props.whiteColor ? 'white' : 'black');
@@ -111,7 +111,7 @@ keyframes\`
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-import { keyframes as _keyframes } from 'styled-components';
+import { keyframes as _keyframes } from 'placed-components';
 
 
 _keyframes(['0%{opacity:0;}100%{opacity:1;}']);

@@ -271,6 +271,6 @@ describe('StyleSheetManager', () => {
     const indexOfWideStyle = source.search('width:222px');
     expect(indexOfNarrowStyle).toBeGreaterThanOrEqual(0);
     expect(indexOfWideStyle).toBeGreaterThanOrEqual(0);
-    expect(indexOfWideStyle).toBeGreaterThan(indexOfRedStyle);
+    expect(indexOfWideStyle).toBeGreaterThan(indexOfNarrowStyle);
   });
 });
