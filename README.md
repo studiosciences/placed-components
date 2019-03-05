@@ -39,13 +39,18 @@ This is what you'll see in your browser:
 ## Styleable Components
 
 Occasionally you will create components that do need styling, whether they
-are private or add a minimal styles. These can be
+are private or add a minimal base styles. Creating a styleable component
+allows composition with added styles for appearance.
 
 ```JSX
 import { placeable, styleable } from 'placed-components';
 
 const NormalizedButton = styleable.button`
-  ::-moz-focus-inner { margin: -1px; padding: 0; border-width: 1px; }
+  ::-moz-focus-inner {
+    margin: -1px;
+    padding: 0;
+    border-width: 1px;
+  }
 `;
 
 const MyButton = placeable(NormalizedButton)`
@@ -59,7 +64,7 @@ const MyButton = placeable(NormalizedButton)`
 ## Fixed Components
 
 Some components should not have any styling added at all, such as a standard
-child component. The created component cannot submitted as a parameter to
+child component. The created component cannot be submitted as a parameter to
 styleable or placeable.
 
 ```JSX
